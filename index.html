@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的心靈情緒大飯店 - 蘇格拉底寫作引導</title>
+    <style>
+        :root {
+            --primary-color: #8b5cf6;
+            --primary-dark: #6d28d9;
+            --bg-color: #f3f4f6;
+            --card-bg: #ffffff;
+            --text-color: #1f2937;
+            --border-radius: 12px;
+        }
+
+        body {
+            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 3px dashed #e5e7eb;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+        }
+
+        .intro-box {
+            background-color: #f5f3ff;
+            border-left: 5px solid var(--primary-color);
+            padding: 15px;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            margin-bottom: 30px;
+        }
+
+        .step-card {
+            background-color: #fafafa;
+            border: 1px solid #e5e7eb;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .step-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+
+        .question-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        select, input[type="text"], textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        select:focus, input[type="text"]:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .hint {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .essay-area {
+            margin-top: 30px;
+            border-top: 3px dashed #e5e7eb;
+            padding-top: 20px;
+        }
+
+        #essay-result {
+            min-height: 300px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            background-color: #fffbe0;
+            border: 1px solid #fce7f3;
+        }
+
+        .print-btn {
+            background-color: #10b981;
+            margin-top: 15px;
+        }
+
+        .print-btn:hover {
+            background-color: #059669;
+        }
+
+        @media print {
+            body { background: white; }
+            .container { box-shadow: none; padding: 0; }
+            .step-card, .intro-box, .btn { display: none; }
+            .essay-area { border: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>🏨 我的心靈情緒大飯店</h1>
+        <p>三年____班 姓名：<input type="text" id="student-name" style="width:120px; display:inline;" placeholder="姓名"> 座號：<input type="text" id="student-id" style="width:80px; display:inline;" placeholder="座號"></p>
+    </header>
+
+    <div class="intro-box">
+        <strong>給小小經理的話：</strong><br>
+        歡迎來到你的「情緒大飯店」！每一天，我們心裡都會迎來不同的客人。今天請你以「飯店經理」的身分，接待一位來自三年六班、剛罵了髒話的同學，用愛與智慧幫助他安頓情緒、安心退房！
+    </div>
+
+    <!-- 步驟 1 -->
+    <div class="step-card">
+        <div class="step-title"><span class="step-number">1</span> Who（角色是誰與情緒外貌）</div>
+        
+        <div class="question-group">
+            <label for="char-select">1. 你要接待哪一位同學？</label>
+            <select id="char-select">
+                <option value="">-- 請選擇同學 --</option>
+                <option value="高雅">高雅（愛漂亮、注重儀表）</option>
+                <option value="巴飛飛">巴飛飛（熱心大方、富正義感）</option>
+                <option value="小章魚">小章魚（愛面子、委屈不公）</option>
+                <option value="曾芬素">曾芬素（天真爛漫、愛幻想）</option>
+                <option value="電競王">電競王（調皮搗蛋、重義氣）</option>
+                <option value="陳序">陈序（認真負責、高度焦慮）</option>
+                <option value="李大同">李大同（直率、愛講道理）</option>
+                <option value="孫小聖">孫小聖（個性急躁、珍惜早餐）</option>
+            </select>
+        </div>
+
+        <div class="question-group">
+            <label for="q1-1">2. 他帶著哪一種「情緒怪獸」走進大門？（如：像大火球的憤怒、縮成一團的委屈、手忙腳亂的焦慮）</label>
+            <input type="text" id="q1-1" placeholder="例：像一顆發燙大火球的憤怒怪獸">
+        </div>
+
+        <div class="question-group">
+            <label for="q1-2">3. 他進門時表情與說話口氣怎麼樣？</label>
+            <input type="text" id="q1-2" placeholder="例：滿臉通紅，氣喘吁吁，大聲叫喊著">
+        </div>
+    </div>
+
+    <!-- 步驟 2 -->
+    <div class="step-card">
+        <div class="step-title"><span class="step-number">2</span> When & Where（發生的時間與地點）</div>
+        
+        <div class="question-group">
+            <label for="q2-1">1. 事情發生在哪一天或什麼時間點？</label>
+            <input type="text" id="q2-1" placeholder="例：下著大雨的早晨上學途中 / 混亂的地震演練時">
+        </div>
+
+        <div class="question-group">
+            <label for="q2-2">2. 當時地點在哪裡？周圍有什麼景象或聲音？</label>
+            <input type="text" id="q2-2" placeholder="例：在學校走廊上，周圍傳來轟隆隆的喇叭聲與下雨聲">
+        </div>
+    </div>
+
+    <!-- 步驟 3 -->
+    <div class="step-card">
+        <div class="step-title"><span class="step-number">3</span> What & Why（爆發的原因與深層心情）</div>
+        
+        <div class="question-group">
+            <label for="q3-1">1. 發生了什麼事讓他忍不住？他脫口罵出了哪句話？</label>
+            <textarea id="q3-1" placeholder="例：汽車疾駛而過潑了他一身泥水，精心打扮的新洋裝毀了，他忍不住大罵：「世界上最差勁的豬頭司機！」"></textarea>
+        </div>
+
+        <div class="question-group">
+            <label for="q3-2">2. 表面上是生氣，但心裡「真正的感覺」是什麼？</label>
+            <input type="text" id="q3-2" placeholder="例：不是真的想罵人，而是覺得太委屈、太難過了">
+        </div>
+    </div>
+
+    <!-- 步驟 4 -->
+    <div class="step-card">
+        <div class="step-title"><span class="step-number">4</span> How（經理的接待與安頓魔法）</div>
+        
+        <div class="question-group">
+            <label for="q4-1">1. 你帶他去哪間房間？為他準備了什麼？</label>
+            <input type="text" id="q4-1" placeholder="例：有大陽台與寬暢空間的房間，並倒了一杯溫熱的洋甘菊茶">
+        </div>
+
+        <div class="question-group">
+            <label for="q4-2">2. 你對他說了什麼貼心話，或教他什麼魔法？</label>
+            <input type="text" id="q4-2" placeholder="例：對他說「我知道你受委屈了」，並教他閉上眼睛慢慢深呼吸數到十">
+        </div>
+
+        <div class="question-group">
+            <label for="q4-3">3. 平靜準備退房時，他的表情有何改變？下次遇到困難他決定怎麼做？</label>
+            <textarea id="q4-3" placeholder="例：雙眼恢復了溫柔，微笑著道謝。下次再遇到問題時，他決定先停下五秒鐘深呼吸，把話好好說出來。"></textarea>
+        </div>
+    </div>
+
+    <button class="btn" onclick="generateDraft()">✨ 組合我的作文草稿</button>
+
+    <!-- 作文稿紙區 -->
+    <div class="essay-area">
+        <h2>✍️ 作文寫作區</h2>
+        <div class="question-group">
+            <label for="essay-title">題目：</label>
+            <input type="text" id="essay-title" value="當＿＿＿＿＿＿來到情緒大飯店">
+        </div>
+
+        <div class="question-group">
+            <label for="essay-result">請在此整理並修改你的完整文章：</label>
+            <textarea id="essay-result" placeholder="點擊上方「組合我的作文草稿」按鈕後，引導內容會自動生成在這裡，學生可以再進行潤飾與增修..."></textarea>
+        </div>
+
+        <button class="btn print-btn" onclick="window.print()">🖨️ 列印 / 儲存為 PDF</button>
+    </div>
+</div>
+
+<script>
+    function generateDraft() {
+        const name = document.getElementById('student-name').value || '小經理';
+        const character = document.getElementById('char-select').value || '同學';
+        const q1_1 = document.getElementById('q1-1').value || '憤怒的怪獸';
+        const q1_2 = document.getElementById('q1-2').value || '滿臉通紅、語氣衝動';
+        
+        const q2_1 = document.getElementById('q2-1').value || '某一天的學校裡';
+        const q2_2 = document.getElementById('q2-2').value || '現場一片混亂';
+        
+        const q3_1 = document.getElementById('q3-1').value || '發生了不順心的事';
+        const q3_2 = document.getElementById('q3-2').value || '覺得很受傷、很委屈';
+        
+        const q4_1 = document.getElementById('q4-1').value || '專屬的舒適房間，並遞給他一杯溫水';
+        const q4_2 = document.getElementById('q4-2').value || '輕聲安慰他，並陪他一起深呼吸';
+        const q4_3 = document.getElementById('q4-3').value || '心情平靜了下來，學會了用更好的方式表達自己的感受';
+
+        // 更新題目
+        document.getElementById('essay-title').value = `當${character}來到情緒大飯店`;
+
+        // 生成四段草稿
+        const paragraph1 = `叮咚！情緒大飯店的玻璃門被推開了。在${q2_1}，${q2_2}。一位帶著${q1_1}的客人衝了進來，原來是三年六班的${character}！他當時${q1_2}，整個人看起來就像一顆隨時會爆炸的炸彈。`;
+        
+        const paragraph2 = `${character}一邊講、一邊氣憤難平。原來剛才${q3_1}。其實，身為經理的我明白，他表面上是在發脾氣、罵髒話，但內心深處真正的感覺是${q3_2}。`;
+        
+        const paragraph3 = `身為情緒大飯店的經理，我知道強行把憤怒關起來只會火上加油。於是我帶他來到${q4_1}。我輕聲對他說：「${q4_2}。」引導他給自己的情緒一點發洩與休息的時間。`;
+        
+        const paragraph4 = `慢慢地，房間裡的火藥味消失了。${character}${q4_3}。看到客人微笑著退房離去，我也感到無比滿足。這讓我學到，只要給予適當的空間與理解，每一種壞情緒都能順利退房。`;
+
+        const fullEssay = `${paragraph1}\n\n${paragraph2}\n\n${paragraph3}\n\n${paragraph4}`;
+        
+        document.getElementById('essay-result').value = fullEssay;
+        
+        // 捲動到作文區
+        document.querySelector('.essay-area').scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
